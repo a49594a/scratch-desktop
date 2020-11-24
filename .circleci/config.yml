@@ -15,6 +15,7 @@ aliases:
   - &should_sign
     or:
       - equal: [ develop, << pipeline.git.branch >> ]
+      - equal: [ apple-silicon, << pipeline.git.branch >> ]
       - equal: [ main, << pipeline.git.branch >> ]
       - equal: [ master, << pipeline.git.branch >> ]
   # clear large environment variables from the "scratch-desktop-and-link" context
