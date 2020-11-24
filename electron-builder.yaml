@@ -1,6 +1,6 @@
 directories:
   buildResources: buildResources
-  output: dist/${os}.${arch}
+  output: dist
 appId: edu.mit.scratch.scratch-desktop
 productName: "Scratch 3"
 publish: # empty provider list = don't publish
@@ -16,7 +16,7 @@ mac:
   hardenedRuntime: true
   icon: buildResources/ScratchDesktop.icns
   provisioningProfile: embedded.provisionprofile
-  artifactName: "Scratch ${version}.${ext}"
+  artifactName: "Scratch ${version}.${os}_${arch}.${ext}"
   target:
     - dmg
     - mas
@@ -40,7 +40,7 @@ appx:
   identityName: ScratchFoundation.ScratchDesktop
   publisherDisplayName: "Scratch Foundation"
   publisher: "CN=2EC43DF1-469A-4119-9AB9-568A0A1FF65F"
-  artifactName: "Scratch ${version}.${ext}"
+  artifactName: "Scratch ${version}.${os}_${arch}.${ext}"
 nsis:
   oneClick: false # allow user to choose per-user or per-machine
-  artifactName: "Scratch ${version} Setup.${ext}"
+  artifactName: "Scratch ${version} Setup.${os}_${arch}.${ext}"
