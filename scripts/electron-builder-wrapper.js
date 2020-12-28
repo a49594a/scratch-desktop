@@ -48,11 +48,11 @@ const runBuilder = function (wrapperConfig, target) {
     // the AppX build fails if CSC_* or WIN_CSC_* variables are set
     const shouldStripCSC = (target.name === 'appx') || (!wrapperConfig.doSign);
     const childEnvironment = shouldStripCSC ? stripCSC(process.env) : process.env;
-    if (wrapperConfig.doSign &&
+    /*if (wrapperConfig.doSign &&
         (target.name.indexOf('nsis') === 0) &&
         !(childEnvironment.CSC_LINK || childEnvironment.WIN_CSC_LINK)) {
         throw new Error(`Signing NSIS build requires CSC_LINK or WIN_CSC_LINK`);
-    }
+    }*/
     const platformFlag = getPlatformFlag();
     let allArgs = [platformFlag, target.name];
     if (target.platform === 'darwin') {
@@ -109,10 +109,10 @@ const calculateTargets = function (wrapperConfig) {
             name: 'dmg',
             platform: 'darwin'
         },
-        microsoftStore: {
+        /*microsoftStore: {
             name: 'appx',
             platform: 'win32'
-        },
+        },*/
         windowsDirectDownload: {
             name: 'nsis:ia32',
             platform: 'win32'
@@ -122,7 +122,7 @@ const calculateTargets = function (wrapperConfig) {
     switch (process.platform) {
     case 'win32':
         // Run in two passes so we can skip signing the AppX for distribution through the MS Store.
-        targets.push(availableTargets.microsoftStore);
+        //targets.push(availableTargets.microsoftStore);
         targets.push(availableTargets.windowsDirectDownload);
         break;
     case 'darwin':
