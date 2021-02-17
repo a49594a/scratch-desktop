@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {productName, version} from '../../package.json';
+import { shell } from 'electron';
 
-import logo from '../icon/ScratchDesktop.svg';
+//import logo from '../icon/ScratchDesktop.svg';
+import logo from '../icon/GitBlock.svg';
 
 // TODO: localization?
 const AboutElement = () => (
@@ -18,14 +20,14 @@ const AboutElement = () => (
             transform: 'translate(-50%, -50%)'
         }}
     >
-        <div><img
+        <div><a onClick={() => shell.openExternal("https://gitblock.cn")} ><img
             alt={`${productName} icon`}
             src={logo}
             style={{
                 maxWidth: '10rem',
                 maxHeight: '10rem'
             }}
-        /></div>
+        /></a></div>
         <div style={{margin: '1.5rem'}}>
             <h2>{productName}</h2>
             <div>Version {version}</div>
